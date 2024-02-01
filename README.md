@@ -33,7 +33,7 @@ That's it, but to run the script there is two ways:
 2. The **automatic** setup: if the players are using custom launchers like MultiMc/PolyMc, there is probably a place to run command
 before launching the game, for MultiMc/PolyMc, click on edit instance, go the settings, then custom commands, enable it and paste your command in Pre-launch text field, but one change to it, instead of hardcode the path to the jar file, use extra environment variables like `
    $INST_MC_DIR` (MultiMc/PolyMc), it will be something like this:
-3. 
+
 ```console
 java -jar $INST_MC_DIR\syncMinecraftMods.jar {githubRepoOwnerName} {githubRepoName}
 ```
