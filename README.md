@@ -26,7 +26,7 @@ you can set up it and use it whatever if you have mods or planning on add mods
 5. [Java installation](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) is required to run the Jar file, and it's required to run Minecraft in general
 
 
-That's it, but to run the script there is two ways:
+That's it, but to run the script there are two ways:
 
 1. The **manual** setup: Create bat script with your command in step 3 and paste it, Make a shortcut to it into the Desktop, and ask the player to run it before launching the game or ask everytime in a while when you update the mods
 
