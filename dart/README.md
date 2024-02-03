@@ -1,2 +1,3 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+# Minecraft's mods sync
+
+A port of the Kotlin/JVM implementation
