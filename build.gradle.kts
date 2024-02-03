@@ -32,6 +32,9 @@ kotlin {
     jvmToolchain(17)
 }
 
+// disables the normal jar task
+tasks.jar { enabled = false }
+
 tasks.withType<ShadowJar> {
     archiveFileName.set("syncMinecraftMods.jar")
 //    minimize()

@@ -46,29 +46,30 @@ fun main(args: Array<String>): Unit = runBlocking(Dispatchers.IO) {
     prettyPrintList(modsFiles.map { it.name }, "Current mods:")
 
     val contents =
-        githubRepoApi.getRepoFiles(repoOwnerName, repoName).filter { it.download_url != null }
-    prettyPrintList(contents.map { it.download_url }, "Download urls:")
+        githubRepoApi.getRepoFiles(repoOwnerName, repoName).filter { it.downloadUrl != null }
+    prettyPrintList(contents.map { it.downloadUrl }, "Download urls:")
 
-    val modsFileNames = contents.map { getFileNameFromUrl(it.download_url ?: "") }
+    val modsFileNames = contents.map { getFileNameFromUrl(it.downloadUrl ?: "") }
     prettyPrintList(modsFileNames, "Mods names:")
 
-    for (file in modsFiles) {
+    for (modFile in modsFiles) {
         // Delete unused/old mods if the user want to
-        if (!modsFileNames.contains(file.name) && isShouldDeleteOldMods) {
-            println(" * Deleting the $file as it's not needed anymore, it's not in the mods")
-            file.delete()
+        if (!modsFileNames.contains(modFile.name) && isShouldDeleteOldMods) {
+            println(" * Deleting the $modFile as it's not needed anymore, it's not in the mods")
+            modFile.delete()
         }
     }
 
     for (content in contents) {
-        val fileName = getFileNameFromUrl(content.download_url ?: "")
+        val fileName = getFileNameFromUrl(content.downloadUrl ?: "")
         val file = File(modsFolder, fileName)
         if (file.exists()) {
-            if (content.size == file.length()) {
-                println(" - The file: $fileName exists with correct size, ${content.size} == ${file.length()} is ${content.size == file.length()}, skip to the next mod")
+            val fileLength = file.length()
+            if (content.size == fileLength) {
+                println(" - The file: $fileName exists with correct size, ${content.size} == $fileLength is true, skip to the next mod")
                 continue
             }
-            println(" - The file $fileName exists but the size is not matched (${content.size} == ${file.length()} is ${content.size == file.length()}), we will delete it and re-download it")
+            println(" - The file $fileName exists but the size is not matched (${content.size} == $fileLength is false, we will delete it and re-download it")
             file.delete()
 //            val fileHash = calculateSHA256(file)
 //            if (fileHash == content.sha) {
@@ -78,14 +79,14 @@ fun main(args: Array<String>): Unit = runBlocking(Dispatchers.IO) {
 //            println(" - The file $fileName exists but the hash is not matched (the local one is $fileHash and the one from cloud is ${content.sha}), we will delete it and re-download it")
 //            file.delete()
         }
-        println("Downloading $fileName from ${content.download_url}")
+        println("Downloading $fileName from ${content.downloadUrl}")
         val responseBytes =
-            httpClient.get(content.download_url ?: throw NullPointerException("Download url is null")).bodyAsChannel()
+            httpClient.get(content.downloadUrl ?: throw NullPointerException("Download url is null")).bodyAsChannel()
                 .toByteArray()
         file.writeBytes(responseBytes)
     }
 
-    println("Done!")
+    println("Done syncing mods!")
     exitProcess(0)
 }
 
