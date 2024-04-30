@@ -22,7 +22,7 @@ you can set up it and use it whatever if you have mods or planning on add mods
    
     Example on MultiMc launcher: `C:\Users\{username}\AppData\Roaming\MultiMc\instances\1.20.4(1)\.minecraft`
     Example on official Minecraft launcher: `C:\Users\{username}\AppData\Roaming\.minecraft`
-5. [Java installation](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) is required to run the Jar file if you are using the Java version, it's also required to run Minecraft in custom launchers, official minecraft launcher download already download it, but it will be installed internally
+5. [Java installation](https://adoptium.net/temurin/releases/?package=jre) is required to run the Jar file if you are using the Java version, it's also required to run Minecraft in custom launchers, official minecraft launcher download already download it, but it will be installed internally
 
 
 That's it, but to run the script there are two ways:
