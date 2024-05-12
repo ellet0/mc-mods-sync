@@ -1,4 +1,8 @@
-# Minecraft's mods sync
+# Minecraft's mods sync (**Deprecated**)
+
+> This Minecraft sync script is no longer under active development and will not receive new updates. We strongly recommend migrating to the improved version available at:
+> https://github.com/ellet0/minecraft-sync
+> The current script will still work (at least for now)
 
 A quick script written in both Kotlin/JVM and Dart that help you update your mods/mod-pack to all the players without restarting the game or downloading it in game which require additional mod
 it compatible with already downloaded and existing mods
